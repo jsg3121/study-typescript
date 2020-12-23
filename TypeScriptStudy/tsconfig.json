@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext", // 사용할 ES의 버전 (기본 ES3)
-    "module": "CommonJS",
+    "module": "CommonJS", // 모듈을 위한 코드 설정
     "lib": ["ES2017", "ESNext", "ESNext.AsyncIterable", "DOM"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
