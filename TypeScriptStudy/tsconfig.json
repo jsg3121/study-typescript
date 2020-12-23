@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // 사용할 ES의 버전 (기본 ES3)
+    "module": "CommonJS",
+    "lib": ["ES2017", "ESNext", "ESNext.AsyncIterable", "DOM"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "declaration": true,
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "outDir": "./build",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
