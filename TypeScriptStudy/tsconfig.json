@@ -2,19 +2,19 @@
   "compilerOptions": {
     "target": "ESNext", // 사용할 ES의 버전 (기본 ES3)
     "module": "CommonJS", // 모듈을 위한 코드 설정
-    "lib": ["ES2017", "ESNext", "ESNext.AsyncIterable", "DOM"],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "noUnusedLocals": true,
-    "declaration": true,
-    "sourceMap": true,
-    "noImplicitAny": false,
-    "skipLibCheck": true,
-    "outDir": "./build",
-    "baseUrl": ".",
+    "lib": ["ES2017", "ESNext", "ESNext.AsyncIterable", "DOM"], // 컴파일에 필요한 라이브러리 파일 목록
+    "experimentalDecorators": true, // ES7의 decorators('@'가 들어가있는 코드 )에 대한 지원 여부
+    "emitDecoratorMetadata": true, // decorator를 위한 타입 메타데이터를 내보내는 것에 대한 지원 여부
+    "esModuleInterop": true,  // 모든 imports에 대한 namespace생성을 통해 CommonJS와 ES Modules간에 상호 운용성이 생기는 여부 'allowSyntheticDefaultImports'를 암시적으로 승인
+    "noUnusedLocals": true,  // 사용되지 않은 지역변수에 대한 에러보고 여부
+    "declaration": true, // .d.ts 파일 생성 여부 (.d.ts => 컴파일 뒤 생성되는 js파일에서 ts에서 지정한 타입을 명시해주는 파일)
+    "sourceMap": true, // .map파일 생성 여부
+    "noImplicitAny": false, // any타입으로 구현된 표현식 혹은 정의 에러처리 여부
+    "skipLibCheck": true, // 정의 파일의 타입 확인을 건너 뛸 지 여부
+    "outDir": "./build", // 해당 디렉토리로 결과 구조를 보냄
+    "baseUrl": ".",  // non-absolute한 모듈 이름을 처리할 기준 디렉토리
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"]  // baseURL을 기준으로 불러올 모듈의 위치를 재지정하는 엔트리 시리즈
     }
   },
   "include": ["src/**/*"],
