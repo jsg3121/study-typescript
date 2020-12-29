@@ -1,5 +1,5 @@
 import express from 'express';
-import { calc, redisStudy } from '~/common';
+import { calc } from '~/common';
 import path from 'path';
 
 
@@ -15,4 +15,8 @@ app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
 
-redisStudy();
+// redis 기초
+// redisStudy();
+
+// redis pub/sub 구현
+// PUBSUB();

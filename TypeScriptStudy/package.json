@@ -15,6 +15,7 @@
     "connect-redis": "^5.0.0",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
+    "ioredis": "^4.19.4",
     "nodemon": "^2.0.6",
     "redis": "^3.0.2",
     "redis-server": "^1.2.2"
@@ -30,6 +31,7 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
     "@types/express": "^4.17.9",
+    "@types/ioredis": "^4.17.10",
     "@types/node": "^14.14.14",
     "@types/redis": "^2.8.28",
     "babel-plugin-module-resolver": "^4.1.0",
