@@ -43,8 +43,15 @@ export const socketIo = () => {
       io.emit('receive message', msg);
       // 화면에 표시하기 위해 html 파일 내에 있는 'receive message' event emit
     });
-
   });
+
+  // io object는 서버가 만들거나 받는 event를 담당, socket object는 개별의 클라이언트의 socket이 만들거나 받는 event를 담당
+  // connection event는 사이트 접속이 일어날 때 서버가 받는 event이므로 io.on('connection', func)가 event listner
+  // disconnect event는 개별 클라이언트가 접속이 끊어졌을 때 해당 socket이 받는 event이므로 socket.on('disconnect', func)가 event listener
+  // 사용자 정의 이벤트들 역시 개별 socket이 받는 event이므로 socket.on('disconnect', func)
+  // 클라이언트에서 socket을 통해 event를 서버로 전달 : socket.emit
+  // 서버가 event를 하나의 특정한 클라이언트에게만 전달 : io.to(socket.id).emit함
+  // 서버가 event를 모든 클라이언트들에게 전달 : io.emit
 
   server.listen(4000, () => {
     console.log("server listening");
