@@ -1,66 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .chat_log {
-            width: 95%;
-            height: 200px;
-        }
+      .chat_log {
+        width: 95%;
+        height: 200px;
+      }
 
-        .name {
-            width: 10%;
-        }
+      .name {
+        width: 10%;
+      }
 
-        .message {
-            width: 70%;
-        }
+      .message {
+        width: 70%;
+      }
 
-        .chat {
-            width: 10%;
-        }
+      .chat {
+        width: 10%;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div>
-        <textarea id="chatLog" class="chat_log" readonly></textarea>
+      <textarea id="chatLog" class="chat_log" readonly></textarea>
     </div>
     <form id="chat">
-        <input id="name" class="name" type="text" readonly>
-        <input id="message" class="message" type="text">
-        <input type="submit" class="chat" value="chat" />
+      <input id="name" class="name" type="text" readonly />
+      <input id="message" class="message" type="text" />
+      <input type="submit" class="chat" value="chat" />
     </form>
-    <div id="box" class="box">
-    </div>
-    <script src="/socket.io/socket.io.js"></script> <!-- socket.io를 사용하기 위해 반드시 가져와야함 -->
-    <script src="//code.jquery.com/jquery-1.11.1.js"></script> <!-- socket.io의 이벤트를 받거나 보내기 위해 사용됨 -->
+    <div id="box" class="box"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- socket.io를 사용하기 위해 반드시 가져와야함 -->
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+    <!-- socket.io의 이벤트를 받거나 보내기 위해 사용됨 -->
     <script>
-        let socket = io(); // socket.io를 불러온다
+      let socket = io() // socket.io를 불러온다
 
-        // jquery의 submit event = 입력창이 submit되면 서버로 'send message'가 사용자 정의 'servere event'와 이름, 채팅 메세지를 전달함 이후 message에 내용을 지워주고
-        // focus를 해준 후 event를 정지
-        $("#chat").on("submit", (e) => {
-            socket.emit("send message", $("#name").val(), $("#message").val());
-            $("#message").val("");
-            $("#message").focus();
-            e.preventDefault();
-        });
+      // jquery의 submit event = 입력창이 submit되면 서버로 'send message'가 사용자 정의 'servere event'와 이름, 채팅 메세지를 전달함 이후 message에 내용을 지워주고
+      // focus를 해준 후 event를 정지
+      $('#chat').on('submit', (e) => {
+        socket.emit('send message', $('#name').val(), $('#message').val())
+        $('#message').val('')
+        $('#message').focus()
+        e.preventDefault()
+      })
 
-        // socket의 receive message event = 서버에서 receive message가 emit되면 message를 #chatLog에 추가하고 스크롤함
-        socket.on("receive message", (msg) => {
-            $("#chatLog").append(`${msg} \n`);
-            $("#chatLog").scrollTop($("#chatLog")[0].scrollHeight);
-        });
+      // socket의 receive message event = 서버에서 receive message가 emit되면 message를 #chatLog에 추가하고 스크롤함
+      socket.on('receive message', (msg) => {
+        $('#chatLog').append(`${msg} \n`)
+        $('#chatLog').scrollTop($('#chatLog')[0].scrollHeight)
+      })
 
-        // socket의 change name event = 서버에서 change name이 emit되면 #name에 이름을 변경함
-        socket.on("change name", (name) => {
-            $("#name").val(name)
-        })
+      // socket의 change name event = 서버에서 change name이 emit되면 #name에 이름을 변경함
+      socket.on('change name', (name) => {
+        $('#name').val(name)
+      })
     </script>
-</body>
-
+  </body>
 </html>
